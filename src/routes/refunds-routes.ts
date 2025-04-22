@@ -18,5 +18,11 @@ refundsRoutes.post(
     refundsController.index
   )
 
+  refundsRoutes.get(
+    "/:id", 
+    verifyUserAuthorization(["manager", "manager"]),
+    refundsController.show
+  )
+
 export { refundsRoutes }
 
