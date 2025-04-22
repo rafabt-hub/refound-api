@@ -12,7 +12,7 @@ const CategoriesEnum = z.enum([
 ])
 
 class RefundsController {
-  async create(request: Request, response: Response){
+  async create(request: Request, response: Response) {
     const bodySchema = z.object({
       name: z.string().trim().min(1, { message: "Informe o nome da solicitação."}),
       category: CategoriesEnum,
@@ -38,6 +38,13 @@ class RefundsController {
 
     response.status(201).json(refund)
   }
+
+  async index(request: Request, response: Response) {
+    response.json({ message: "ok"})
+  }
 }
+
+ 
+
 
 export { RefundsController }
