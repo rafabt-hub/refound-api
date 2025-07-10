@@ -1,24 +1,27 @@
 # Refund API 💸
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![Tech](https://img.shields.io/badge/tech-Node.js%20%26%20Fastify-68A063?logo=node.js)
+![Tech](https://img.shields.io/badge/tech-Node.js%20%26%20Express-68A063?logo=node.js)
 
-The backend API for the Refund 2.0 application. Built with Node.js, Fastify, and Prisma, it provides endpoints for managing financial transactions and calculating summaries.
+The backend API for the Refund application. Built with Node.js, Express, and Prisma, it provides endpoints for managing financial transactions.
 
 ## ✨ Features
 
--   **Create and list transactions:** Full CRUD support for financial entries.
--   **Financial Summary:** A dedicated endpoint to calculate total income, expenses, and the final balance.
+-   **Full CRUD Support:** Create, read, update, and delete transactions.
+-   **Secure Authentication:** User authentication and route protection using JWT.
+-   **File Uploads:** Supports file uploads for receipts or attachments using Multer.
 -   **Type-safe:** Built with TypeScript and validated with Zod to ensure data integrity.
--   **Lightweight Setup:** Uses SQLite for a file-based database, requiring no external database server for local development.
+-   **Secure Password Storage:** Passwords are encrypted using `bcrypt`.
 
 ## 🛠️ Tech Stack
 
 -   **Runtime:** [Node.js](https://nodejs.org/)
--   **Framework:** [Fastify](https://www.fastify.io/)
+-   **Framework:** [Express.js](https://expressjs.com/pt-br/)
 -   **Language:** [TypeScript](https://www.typescriptlang.org/)
 -   **ORM:** [Prisma](https://www.prisma.io/)
--   **Database:** [SQLite](https://www.sqlite.org/index.html)
+-   **Authentication:** [JSON Web Token (JWT)](https://jwt.io/)
+-   **Password Hashing:** [Bcrypt](https://www.npmjs.com/package/bcrypt)
+-   **File Uploads:** [Multer](https://github.com/expressjs/multer)
 -   **Schema Validation:** [Zod](https://zod.dev/)
 
 ## 🚀 Getting Started
@@ -37,25 +40,21 @@ To run this project locally, you'll need Node.js and npm.
     ```sh
     npm install
     ```
-4.  **Set up the database:**
-    This project uses SQLite, so no external database is needed. The following command will create the database file and run the necessary migrations.
+4.  **Set up environment variables:**
+    Create a `.env` file in the root directory and add your database connection string and JWT secret.
+    ```.env
+    DATABASE_URL="your-database-connection-string"
+    JWT_SECRET="your-super-secret-key"
+    ```
+5.  **Run database migrations:**
     ```sh
     npx prisma migrate dev
     ```
-5.  **Run the development server:**
+6.  **Run the development server:**
     ```sh
     npm run dev
     ```
-    The API will be available at `http://localhost:3333`.
-
-## 🌐 API Endpoints
-
-| Method | Endpoint                    | Description                               |
-| :----- | :-------------------------- | :---------------------------------------- |
-| `POST` | `/transactions`             | Creates a new transaction.                |
-| `GET`  | `/transactions`             | Lists all transactions.                   |
-| `GET`  | `/transactions/:id`         | Gets a single transaction by its ID.      |
-| `GET`  | `/transactions/summary`     | Gets a summary of all transactions.       |
+    The API will be available at `http://localhost:3000` (or the port defined in your `server.ts`).
 
 ## 📄 License
 
@@ -68,23 +67,23 @@ This project is licensed under the MIT License.
 
   <br>
 
-  > A API backend para a aplicação Refund 2.0. Construída com Node.js, Fastify e Prisma, ela fornece endpoints para gerenciar transações financeiras e calcular resumos.
+  > A API backend para a aplicação Refund. Construída com Node.js, Express e Prisma, ela fornece endpoints para gerenciar transações financeiras.
 
   ### ✨ Funcionalidades
 
-  -   **Criar e listar transações:** Suporte CRUD completo para lançamentos financeiros.
-  -   **Resumo Financeiro:** Um endpoint dedicado para calcular o total de entradas, saídas e o saldo final.
+  -   **Suporte CRUD Completo:** Crie, leia, atualize e delete transações.
+  -   **Autenticação Segura:** Autenticação de usuário e proteção de rotas usando JWT.
+  -   **Upload de Arquivos:** Suporte para upload de arquivos (recibos, anexos) com Multer.
   -   **Tipagem Segura:** Construído com TypeScript e validado com Zod para garantir a integridade dos dados.
-  -   **Configuração Leve:** Usa SQLite como banco de dados (baseado em arquivo), não exigindo um servidor de banco de dados externo para desenvolvimento local.
+  -   **Armazenamento Seguro de Senhas:** Senhas são criptografadas com `bcrypt`.
 
   ### 🚀 Como Executar
-
-  Para rodar este projeto, você precisará do Node.js e npm.
 
   1.  **Clone o repositório.**
   2.  **Navegue até a pasta do projeto.**
   3.  **Instale as dependências:** `npm install`.
-  4.  **Configure o banco de dados:** Este projeto usa SQLite, então nenhum banco externo é necessário. O comando a seguir criará o arquivo do banco e executará as migrações: `npx prisma migrate dev`.
-  5.  **Inicie o servidor:** `npm run dev`. A API estará rodando em `http://localhost:3333`.
+  4.  **Configure as variáveis de ambiente:** Crie um arquivo `.env` com a string de conexão do banco e um segredo para o JWT.
+  5.  **Execute as migrações do banco:** `npx prisma migrate dev`.
+  6.  **Inicie o servidor:** `npm run dev`.
 
 </details>
